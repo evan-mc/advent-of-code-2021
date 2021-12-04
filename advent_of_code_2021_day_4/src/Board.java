@@ -21,7 +21,7 @@ public class Board
     public Board(int[][] boardLines)
     {
         this.boardLines = boardLines;
-        marked = new boolean[5][5];
+        marked = new boolean[DIMENSION][DIMENSION];
 
         //add all values to sum since nothing is marked yet
         for(int i = 0; i < DIMENSION; ++i)
@@ -87,7 +87,7 @@ public class Board
                     break;
             }
 
-            if(count == 5)
+            if(count == DIMENSION)
                 return true;
         }
 
@@ -107,7 +107,7 @@ public class Board
                     break;
             }
 
-            if(count == 5)
+            if(count == DIMENSION)
                 return true;
         }
 
@@ -132,11 +132,11 @@ public class Board
 
             //create new boardLines for new board
             if(boardIdx == 0)
-                boardLines = new int[5][5];
+                boardLines = new int[DIMENSION][DIMENSION];
 
             boardLines[boardIdx++] = Arrays.stream(str.split(" ")).filter(s -> !s.isEmpty()).mapToInt(Integer::parseInt).toArray();
 
-            if(boardIdx == 5)
+            if(boardIdx == DIMENSION)
             {
                 boards.add(new Board(boardLines));
                 boardIdx = 0;
@@ -155,6 +155,7 @@ public class Board
         {
             for(int j = 0; j < DIMENSION; ++j)
             {
+                //add padding for single digit numbers
                 if(boardLines[i][j] < 10)
                     sb.append(' ');
 
