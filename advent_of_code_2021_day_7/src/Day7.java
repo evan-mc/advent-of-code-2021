@@ -11,18 +11,8 @@ public class Day7
 
         int[] nums = Arrays.stream(br.readLine().split(",")).mapToInt(Integer::parseInt).sorted().toArray();
 
-        System.out.println(problemOne(nums));
-        System.out.println(problemTwo(nums));
-    }
-
-    public static int problemOne(int[] nums)
-    {
-        return calculateLeastFuelUsage(nums, false);
-    }
-
-    public static int problemTwo(int[] nums)
-    {
-        return calculateLeastFuelUsage(nums, true);
+        System.out.println("problem one: " + calculateLeastFuelUsage(nums, false));
+        System.out.println("problem two: " + calculateLeastFuelUsage(nums, true));
     }
 
     public static int calculateLeastFuelUsage(int[] nums, boolean useIncrement)
